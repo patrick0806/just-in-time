@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import path from 'path';
+import { CompaniesModule } from './module/companies/companies.module';
+import { RouterModule } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -18,6 +20,13 @@ import path from 'path';
       synchronize: false,
       logging: true,
     }),
+    CompaniesModule,
+    RouterModule.register([
+      {
+        module: CompaniesModule,
+        path: '/enterprises',
+      },
+    ]),
   ],
   controllers: [],
   providers: [],

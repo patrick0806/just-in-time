@@ -53,10 +53,15 @@ docker rm just-in-time-postgres
 ## How create and run migrations
 ```bash
   yarn typeorm migration:create src/config/database/migrations/<migration name>
-```
+``
 
 ```bash
   yarn typeorm migration:run -- -d ./ormconfig.ts
+```
+
+
+```bash
+  yarn typeorm migration:revert -d ormconfig.ts
 ```
 
 ## Running the app
