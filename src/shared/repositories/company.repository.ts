@@ -17,4 +17,8 @@ export class CompanyRepository {
   async findByCNPJ(cnpj: string): Promise<Company> {
     return this.companyRepository.findOneBy({ cnpj });
   }
+
+  async findById(id: string): Promise<Company> {
+    return this.companyRepository.findOneBy({ id });
+  }
 }
