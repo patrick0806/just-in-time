@@ -8,7 +8,7 @@ import {
 import { Response } from 'express';
 import { Problem } from './Problem';
 
-@Catch()
+@Catch(HttpException)
 export class ExceptionsFilter implements ExceptionFilter {
   catch(
     exception: HttpException & Omit<Problem, 'status'>,
@@ -20,14 +20,14 @@ export class ExceptionsFilter implements ExceptionFilter {
 
     const statusCode =
       Number(exception.getStatus()) || HttpStatus.INTERNAL_SERVER_ERROR;
-    const exceptionResponse = exception.getResponse() as Record<string, any>;
+    const exceptionResponse = exception?.getResponse() as Record<string, any>;
 
     response.status(statusCode).json({
       status: statusCode,
-      title: exceptionResponse.title,
-      detail: exceptionResponse.message,
+      title: exceptionResponse?.title || exception.message,
+      detail: exceptionResponse?.message,
       timestamp: new Date().toISOString(),
-      fields: exceptionResponse.fields,
+      fields: exceptionResponse?.fields,
     });
   }
 }

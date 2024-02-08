@@ -5,6 +5,7 @@ import { API_BASE_PATH } from '@shared/constants/apiBasePath';
 import { ValidationPipe } from '@nestjs/common';
 import { ValidationException } from '@shared/exceptions/ValidationException';
 import { ExceptionsFilter } from '@shared/filters/ExceptionFilter';
+import { GlobalExceptionsFilter } from '@shared/filters/GlobalExceptionFIlter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -21,7 +22,7 @@ async function bootstrap() {
       },
     }),
   );
-  app.useGlobalFilters(new ExceptionsFilter());
+  app.useGlobalFilters(new ExceptionsFilter(), new GlobalExceptionsFilter());
   app.setGlobalPrefix(API_BASE_PATH);
   app.enableCors();
   await app.listen(process.env.PORT || 3000);
