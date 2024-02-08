@@ -26,7 +26,6 @@ export class ExceptionsFilter implements ExceptionFilter {
       status: statusCode,
       title: exceptionResponse.title,
       detail: exceptionResponse.message,
-      userMessage: exceptionResponse.userMessage,
       timestamp: new Date().toISOString(),
       fields: exceptionResponse.fields,
     });

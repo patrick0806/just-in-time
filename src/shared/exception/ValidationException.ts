@@ -18,7 +18,6 @@ export class ValidationException extends HttpException {
         title: 'Invalid params',
         message: 'Invalid params send in request',
         fields: fieldsErrors,
-        userMessage: 'Please check your params',
       },
       HttpStatus.BAD_REQUEST,
     );

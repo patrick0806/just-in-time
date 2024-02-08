@@ -19,9 +19,6 @@ export class Problem {
   detail: string;
 
   @ApiProperty()
-  userMessage: string;
-
-  @ApiProperty()
   timestamp: Date;
 
   @ApiProperty()
