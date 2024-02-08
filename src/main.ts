@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { SwaggerConfig } from './config/SwaggerConfig';
 import { API_BASE_PATH } from '@shared/constants/apiBasePath';
 import { ValidationPipe } from '@nestjs/common';
-import { ValidationException } from '@shared/exception/ValidationException';
+import { ValidationException } from '@shared/exceptions/ValidationException';
 import { ExceptionsFilter } from '@shared/filters/ExceptionFilter';
 
 async function bootstrap() {
