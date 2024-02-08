@@ -13,9 +13,7 @@ export class FindCompanyByIdService {
       throw new NotFoundException('Company not found');
     }
     return {
-      id: company.id,
-      name: company.name,
-      cnpj: company.cnpj,
+      ...company,
       createdAt: company.createdAt.toISOString(),
       updatedAt: company.updatedAt.toISOString(),
     };

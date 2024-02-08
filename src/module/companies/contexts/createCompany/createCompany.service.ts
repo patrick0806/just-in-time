@@ -29,9 +29,7 @@ export class CreateCompanyService {
     const company = await this.companyRepository.create(companyDTO);
 
     return {
-      id: company.id,
-      name: company.name,
-      cnpj: company.cnpj,
+      ...company,
       createdAt: company.createdAt.toISOString(),
       updatedAt: company.updatedAt.toISOString(),
     };
