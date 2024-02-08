@@ -2,7 +2,9 @@
 
 ## Project status: In Development
 
-This is the API for a financial management system, where we have functions to not only see our financial health, but the financial health of our family as a whole
+Este é o projeto de uma api para um sistema de controle de ponto de hora. Nele sera possivel gerenciar as horas de cada trabalhador da equipe se eles tem horas extras, ou horas faltantes sera possivel ver relátorios detalhados.
+
+Nessa aplicação quero utilizar alguns conceitos como Filas para processar os pontos recebidos em segundo plano. A api tem a ideia de servir uma plataforma white label também.
 
 # API Development Process
 
