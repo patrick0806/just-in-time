@@ -79,6 +79,7 @@ DATABASE_PASSWORD=123
 DATABASE_PORT=5432
 
 JWT_SECRET=batata
+JWT_EXPIRES_IN=2d
 ```
 
 Then, you can run as follows:

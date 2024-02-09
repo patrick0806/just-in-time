@@ -5,6 +5,7 @@ import path from 'path';
 import { CompaniesModule } from './module/companies/companies.module';
 import { RouterModule } from '@nestjs/core';
 import { EmployeesModule } from './module/employees/employees.module';
+import { AuthModule } from './module/auth/auth.module';
 
 @Module({
   imports: [
@@ -21,9 +22,14 @@ import { EmployeesModule } from './module/employees/employees.module';
       synchronize: false,
       logging: true,
     }),
+    AuthModule,
     CompaniesModule,
     EmployeesModule,
     RouterModule.register([
+      {
+        module: AuthModule,
+        path: '/auth',
+      },
       {
         module: CompaniesModule,
         path: '/enterprises',
