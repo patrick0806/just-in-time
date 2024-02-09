@@ -7,7 +7,7 @@ export class UnauthorizedException extends HttpException {
         title: 'Unauthorized',
         message,
       },
-      HttpStatus.BAD_REQUEST,
+      HttpStatus.UNAUTHORIZED,
     );
   }
 }
