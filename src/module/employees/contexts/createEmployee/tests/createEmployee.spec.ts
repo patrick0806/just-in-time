@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 
 import { describe, beforeEach, expect, vi, it } from 'vitest';
-import { CreateEmployeeService } from '../creaEmployee.service';
+import { CreateEmployeeService } from '../createEmployee.service';
 import { CreateEmployeeController } from '../createEmploy.controller';
 import { HttpStatus } from '@nestjs/common';
 import { AlreadExistsException } from '@shared/exceptions/AlreadyExistException';

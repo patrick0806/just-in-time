@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { CreateEmployeeController } from './contexts/createEmployee/createEmploy.controller';
-import { CreateEmployeeService } from './contexts/createEmployee/creaEmployee.service';
+import { CreateEmployeeService } from './contexts/createEmployee/createEmployee.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Employee } from '@shared/entities/employee.entity';
 import { EmployeeRepository } from '@shared/repositories/employee.repository';
