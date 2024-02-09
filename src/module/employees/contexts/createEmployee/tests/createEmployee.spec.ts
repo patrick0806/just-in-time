@@ -66,12 +66,10 @@ describe('Create company', () => {
     try {
       await controller.handle(params.body);
     } catch (error: AlreadExistsException | any) {
-      expect(repository.findByEmail).toBeCalledTimes(1);
       expect(repository.create).toBeCalledTimes(0);
 
       expect(repository.findByEmail).toBeCalledTimes(1);
       expect(repository.findByEmail).toBeCalledWith(params.body.email);
-      expect(repository.create).toBeCalledTimes(0);
 
       expect(error).toBeInstanceOf(AlreadExistsException);
       expect(error.status).toBe(HttpStatus.CONFLICT);
