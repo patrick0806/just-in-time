@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
 
-import { describe, beforeEach, expect, vi, it } from 'vitest';
+import { describe, beforeAll, expect, vi, it } from 'vitest';
 import { LoginController } from '../login.controller';
 import { LoginService } from '../login.service';
 import { HttpStatus } from '@nestjs/common';
@@ -17,7 +17,7 @@ describe('Create company', () => {
   let service: LoginService;
   let repository: EmployeeRepository;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const module = await Test.createTestingModule({
       imports: [ConfigModule.forRoot()],
       controllers: [LoginController],

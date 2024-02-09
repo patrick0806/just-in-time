@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
 
-import { describe, beforeEach, expect, vi, it } from 'vitest';
+import { describe, beforeAll, expect, vi, it } from 'vitest';
 import { CompanyRepository } from '@shared/repositories/company.repository';
 import { params } from './mocks/params.mock';
 import { repositoryMockResponse } from './mocks/repository.mock';
@@ -15,7 +15,7 @@ describe('Create company', () => {
   let service: FindCompanyByIdService;
   let repository: CompanyRepository;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const module = await Test.createTestingModule({
       controllers: [FindCompanyByIdController],
       providers: [
