@@ -84,8 +84,6 @@ describe('Create company', () => {
     try {
       await controller.handle(params.body);
     } catch (error: UnauthorizedException | any) {
-      console.log('inside test');
-      console.log(error);
       expect(repository.findByEmail).toBeCalledTimes(1);
       expect(repository.findByEmail).toBeCalledWith(params.body.email);
 
