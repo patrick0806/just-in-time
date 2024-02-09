@@ -3,9 +3,10 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import path from 'path';
 import { CompaniesModule } from './module/companies/companies.module';
-import { RouterModule } from '@nestjs/core';
+import { APP_GUARD, RouterModule } from '@nestjs/core';
 import { EmployeesModule } from './module/employees/employees.module';
 import { AuthModule } from './module/auth/auth.module';
+import { AuthGuard } from '@shared/guard/auth.guard';
 
 @Module({
   imports: [
@@ -41,6 +42,11 @@ import { AuthModule } from './module/auth/auth.module';
     ]),
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AppModule {}
