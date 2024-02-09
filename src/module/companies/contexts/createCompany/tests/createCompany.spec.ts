@@ -9,6 +9,7 @@ import { repositoryMockResponse } from './mocks/response.mock';
 import { HttpStatus } from '@nestjs/common';
 import { BussinesException } from '@shared/exceptions/BusinessException';
 import { AlreadExistsException } from '@shared/exceptions/AlreadyExistException';
+import { AuthGuard } from '@shared/guard/auth.guard';
 
 describe('Create company', () => {
   let controller: CreateCompanyController;
@@ -28,7 +29,10 @@ describe('Create company', () => {
           },
         },
       ],
-    }).compile();
+    })
+      .overrideGuard(AuthGuard)
+      .useValue(true)
+      .compile();
 
     controller = module.get<CreateCompanyController>(CreateCompanyController);
     service = module.get<CreateCompanyService>(CreateCompanyService);

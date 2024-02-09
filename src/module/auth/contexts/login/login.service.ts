@@ -17,9 +17,14 @@ export class LoginService {
     password,
   }: LoginRequestDTO): Promise<{ accessToken: string }> {
     const user = await this.employeeRepository.findByEmail(email);
+
+    if (!user) {
+      throw new UnauthorizedException('Invalid email or password');
+    }
+
     const isPasswordValid = await comparePassword(password, user.password);
 
-    if (!user || !isPasswordValid) {
+    if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid email or password');
     }
 

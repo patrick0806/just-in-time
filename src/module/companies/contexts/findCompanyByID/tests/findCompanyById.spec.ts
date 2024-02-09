@@ -8,6 +8,7 @@ import { FindCompanyByIdController } from '../findCompanyById.controller';
 import { FindCompanyByIdService } from '../findCompanyById.service';
 import { NotFoundException } from '@shared/exceptions/NotFoundException';
 import { HttpStatus } from '@nestjs/common';
+import { AuthGuard } from '@shared/guard/auth.guard';
 
 describe('Create company', () => {
   let controller: FindCompanyByIdController;
@@ -26,7 +27,10 @@ describe('Create company', () => {
           },
         },
       ],
-    }).compile();
+    })
+      .overrideGuard(AuthGuard)
+      .useValue(true)
+      .compile();
 
     controller = module.get<FindCompanyByIdController>(
       FindCompanyByIdController,
