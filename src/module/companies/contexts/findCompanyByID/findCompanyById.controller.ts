@@ -1,4 +1,4 @@
-import { Controller, Get, HttpStatus, Param, UseGuards } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Param } from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiOperation,
@@ -9,11 +9,9 @@ import { API_TAGS } from '@shared/constants/apiTags';
 import { FindCompanyByIdResponseDTO } from './dtos/response.dto';
 import { Problem } from '@shared/filters/Problem';
 import { FindCompanyByIdService } from './findCompanyById.service';
-import { AuthGuard } from '@shared/guard/auth.guard';
 
 @ApiTags(API_TAGS.COMPANY)
 @Controller()
-@UseGuards(AuthGuard)
 export class FindCompanyByIdController {
   constructor(private findCompanyByIdService: FindCompanyByIdService) {}
 

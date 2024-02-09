@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiOperation,
@@ -10,11 +10,9 @@ import { CreateEmployeeRequestDTO } from './dtos/request.dto';
 import { CreateEmployeeResponseDTO } from './dtos/response.dto';
 import { Problem } from '@shared/filters/Problem';
 import { CreateEmployeeService } from './createEmployee.service';
-import { AuthGuard } from '@shared/guard/auth.guard';
 
 @ApiTags(API_TAGS.EMPLOYEE)
 @Controller()
-@UseGuards(AuthGuard)
 export class CreateEmployeeController {
   constructor(private createEmployeeService: CreateEmployeeService) {}
 

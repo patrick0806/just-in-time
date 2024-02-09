@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiBody,
@@ -11,11 +11,9 @@ import { CreateCompanyRequestDTO } from './dtos/request.dto';
 import { CreateCompanyResponseDTO } from './dtos/response.dto';
 import { Problem } from '@shared/filters/Problem';
 import { CreateCompanyService } from './createCompany.service';
-import { AuthGuard } from '@shared/guard/auth.guard';
 
 @ApiTags(API_TAGS.COMPANY)
 @Controller()
-@UseGuards(AuthGuard)
 export class CreateCompanyController {
   constructor(private createCompanyService: CreateCompanyService) {}
 
