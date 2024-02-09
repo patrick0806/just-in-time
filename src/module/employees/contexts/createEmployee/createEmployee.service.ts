@@ -22,7 +22,7 @@ export class CreateEmployeeService {
 
     const hashPassword = await generateHashPassword(employData.password);
     employData.password = hashPassword;
-    //throw new Error('Não é pra cirar agora');
+
     const createdEmployee = await this.employeeRepository.create(employData);
     return {
       id: createdEmployee.id,

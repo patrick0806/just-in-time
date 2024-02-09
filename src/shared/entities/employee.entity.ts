@@ -28,6 +28,9 @@ export class Employee {
   @Column({ name: 'phone_number', type: 'varchar', length: 15 })
   phoneNumber: string;
 
+  @Column()
+  active: boolean;
+
   @Column({ type: 'varchar', length: 30 })
   role: string;
 
