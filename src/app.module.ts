@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import path from 'path';
 import { CompaniesModule } from './module/companies/companies.module';
 import { RouterModule } from '@nestjs/core';
+import { EmployeesModule } from './module/employees/employees.module';
 
 @Module({
   imports: [
@@ -21,10 +22,15 @@ import { RouterModule } from '@nestjs/core';
       logging: true,
     }),
     CompaniesModule,
+    EmployeesModule,
     RouterModule.register([
       {
         module: CompaniesModule,
         path: '/enterprises',
+      },
+      {
+        module: EmployeesModule,
+        path: '/employees',
       },
     ]),
   ],
