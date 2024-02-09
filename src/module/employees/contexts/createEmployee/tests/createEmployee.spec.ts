@@ -8,7 +8,6 @@ import { AlreadExistsException } from '@shared/exceptions/AlreadyExistException'
 import { EmployeeRepository } from '@shared/repositories/employee.repository';
 import { repositoryMockResponse } from './mocks/repository.mock';
 import { params } from './mocks/params.mock';
-import { AuthGuard } from '@shared/guard/auth.guard';
 
 describe('Create company', () => {
   let controller: CreateEmployeeController;
@@ -28,10 +27,7 @@ describe('Create company', () => {
           },
         },
       ],
-    })
-      .overrideGuard(AuthGuard)
-      .useValue(true)
-      .compile();
+    }).compile();
 
     controller = module.get<CreateEmployeeController>(CreateEmployeeController);
     service = module.get<CreateEmployeeService>(CreateEmployeeService);
