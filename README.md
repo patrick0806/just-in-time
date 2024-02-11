@@ -55,10 +55,13 @@ First, you need create a `.env` file at the project root:
 ######ENV VARS########
 ######################
 DATABASE_HOST=localhost
-DATABASE_NAME=just-in-time-postgres
+DATABASE_NAME=just-in-time
 DATABASE_USERNAME=root
 DATABASE_PASSWORD=123
 DATABASE_PORT=5432
+
+REDIS_HOST=localhost
+REDIS_PORT=6379
 
 JWT_SECRET=batata
 JWT_EXPIRES_IN=2d
