@@ -4,10 +4,21 @@ import { CreateEmployeeService } from './contexts/createEmployee/createEmployee.
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Employee } from '@shared/entities/employee.entity';
 import { EmployeeRepository } from '@shared/repositories/employee.repository';
+import { SendMailProducerService } from '@shared/jobs/sendMail.producer';
+import { BullModule } from '@nestjs/bull';
+import { SendMailConsumeService } from '@shared/jobs/sendMail.consumer';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Employee])],
+  imports: [
+    TypeOrmModule.forFeature([Employee]),
+    BullModule.registerQueue({ name: 'sendMail' }),
+  ],
   controllers: [CreateEmployeeController],
-  providers: [CreateEmployeeService, EmployeeRepository],
+  providers: [
+    CreateEmployeeService,
+    SendMailProducerService,
+    SendMailConsumeService,
+    EmployeeRepository,
+  ],
 })
 export class EmployeesModule {}

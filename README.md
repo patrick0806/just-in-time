@@ -63,6 +63,11 @@ DATABASE_PORT=5432
 REDIS_HOST=localhost
 REDIS_PORT=6379
 
+MAILER_HOST=smtp.ethereal.email
+MAILER_PORT=587
+MAILER_USER=deontae.ratke@ethereal.email
+MAILER_PASSWORD=BNMqBrcJGxBubf8KZ2
+
 JWT_SECRET=batata
 JWT_EXPIRES_IN=2d
 ```

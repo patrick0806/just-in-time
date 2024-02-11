@@ -7,6 +7,8 @@ import { APP_GUARD, RouterModule } from '@nestjs/core';
 import { EmployeesModule } from './module/employees/employees.module';
 import { AuthModule } from './module/auth/auth.module';
 import { AuthGuard } from '@shared/guard/auth.guard';
+import { BullModule } from '@nestjs/bull';
+import { MailerModule } from '@nestjs-modules/mailer';
 
 @Module({
   imports: [
@@ -22,6 +24,22 @@ import { AuthGuard } from '@shared/guard/auth.guard';
       migrations: ['./config/database/migrations/*.{ts,js}'],
       synchronize: false,
       logging: true,
+    }),
+    BullModule.forRoot({
+      redis: {
+        host: process.env.REDIS_HOST,
+        port: Number(process.env.REDIS_PORT),
+      },
+    }),
+    MailerModule.forRoot({
+      transport: {
+        host: process.env.MAILER_HOST,
+        port: Number(process.env.MAILER_PORT),
+        auth: {
+          user: process.env.MAILER_USER,
+          pass: process.env.MAILER_PASSWORD,
+        },
+      },
     }),
     AuthModule,
     CompaniesModule,

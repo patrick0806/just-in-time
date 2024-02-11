@@ -4,10 +4,14 @@ import { CreateEmployeeRequestDTO } from './dtos/request.dto';
 import { CreateEmployeeResponseDTO } from './dtos/response.dto';
 import { AlreadExistsException } from '@shared/exceptions/AlreadyExistException';
 import { generateHashPassword } from '@shared/utils/hash.util';
+import { SendMailProducerService } from '@shared/jobs/sendMail.producer';
 
 @Injectable()
 export class CreateEmployeeService {
-  constructor(private employeeRepository: EmployeeRepository) {}
+  constructor(
+    private employeeRepository: EmployeeRepository,
+    private sendMailProducerService: SendMailProducerService,
+  ) {}
 
   async execute(
     employData: CreateEmployeeRequestDTO,
@@ -24,6 +28,7 @@ export class CreateEmployeeService {
     employData.password = hashPassword;
 
     const createdEmployee = await this.employeeRepository.create(employData);
+    await this.sendMailProducerService.sendMail(createdEmployee);
     return {
       id: createdEmployee.id,
       email: createdEmployee.email,

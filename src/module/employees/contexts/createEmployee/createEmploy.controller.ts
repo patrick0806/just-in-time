@@ -10,6 +10,7 @@ import { CreateEmployeeRequestDTO } from './dtos/request.dto';
 import { CreateEmployeeResponseDTO } from './dtos/response.dto';
 import { Problem } from '@shared/filters/Problem';
 import { CreateEmployeeService } from './createEmployee.service';
+import { Public } from '@shared/decorators/public.decorator';
 
 @ApiTags(API_TAGS.EMPLOYEE)
 @Controller()
@@ -22,6 +23,7 @@ export class CreateEmployeeController {
   @ApiResponse({ status: HttpStatus.BAD_REQUEST, type: Problem })
   @ApiResponse({ status: HttpStatus.CONFLICT, type: Problem })
   @ApiResponse({ status: HttpStatus.INTERNAL_SERVER_ERROR, type: Problem })
+  @Public()
   @Post()
   async handle(
     @Body() body: CreateEmployeeRequestDTO,
