@@ -25,29 +25,11 @@ These three steps are covered in sequence below
 yarn
 ```
 
-## The Database (PostgreSQL)
-
-#### Create database
-
+## Docker-compose
+In this project inside of dev folder we have a docker-compose with the project dependencies like Database and Redis
+to start this dependencies run this command:
 ```bash
-  docker run --name just-in-time-postgres \
-    -p 5432:5432 \
-    -e POSTGRES_DB=just-in-time \
-    -e POSTGRES_USER=root \
-    -e POSTGRES_PASSWORD=123 \
-    -d postgres:14.4-alpine
-```
-
-#### Stop Database
-
-```bash
-docker stop just-in-time-postgres
-```
-
-#### Remove database
-
-```bash
-docker rm just-in-time-postgres
+cd dev && docker-compose up -d
 ```
 
 ## How create and run migrations
